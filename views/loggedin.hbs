@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+</head>
+
+<body>
+
+    {{!-- Navigation links --}}
+    <nav>
+        <h4>Zoo Management Project</h4>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            {{#if isAdmin}}
+            <li><a href="/register">Register</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="text-center mt-3 mb-3">CHAT</h1>
+        <div id=”messages”>
+
+        </div>
+        <textarea id=“message” class=”form-control” placeholder=”Your Message Here”></textarea>
+    </div>
+
+    {{!-- Body of each page will go here --}}
+    <div class="container">
+        <h1 class="text-center mt-3 mb-3">{{title}}</h1>
+        {{#if add}}
+        <div class="card">
+            <div class="card-header">Animal Form</div>
+            <div class="card-body">
+                <form method="POST" action="/add_data">
+                    <div class="row">
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>name</label>
+                                <input type="text" name="name" id="name" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>hair</label>
+                                <select name="hair" id="hair" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>feathers</label>
+                                <select name="feathers" id="feathers" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>eggs</label>
+                                <select name="eggs" id="eggs" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>milk</label>
+                                <select name="milk" id="milk" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>airborne</label>
+                                <select name="airborne" id="airborne" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>aquatic</label>
+                                <select name="aquatic" id="aquatic" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>predator</label>
+                                <select name="predator" id="predator" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>toothed</label>
+                                <select name="toothed" id="toothed" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>backbone</label>
+                                <select name="backbone" id="backbone" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>breathes</label>
+                                <select name="breathes" id="breathes" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>venomous</label>
+                                <select name="venomous" id="venomous" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>fins</label>
+                                <select name="fins" id="fins" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>legs</label>
+                                <select name="legs" id="legs" class="form-control">
+                                    <option value="0">0</option>
+                                    <option value="2">2</option>
+                                    <option value="4">4</option>
+                                    <option value="6">6</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>tail</label>
+                                <select name="tail" id="tail" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>domesstic</label>
+                                <select name="domestic" id="domestic" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>catsize</label>
+                                <select name="catsize" id="catsize" class="form-control">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>type</label>
+                                <select name="type" id="type" class="form-control">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" name="submit_button" class="btn btn-primary" value="Add" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{else if edit}}
+        <div class="card">
+            <div class="card-header">Animal Form</div>
+            <div class="card-body">
+                <form method="POST" action="/edit_data/{{animalData.name}}">
+                    <div class="row">
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>name</label>
+                                <input type="text" name="name" id="name" class="form-control"
+                                    value="{{animalData.name}}" />
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>hair</label>
+                                <select name="hair" id="hair" class="form-control" value="{{animalData.hair}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>feathers</label>
+                                <select name="feathers" id="feathers" class="form-control"
+                                    value="{{animalData.feathers}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>eggs</label>
+                                <select name="eggs" id="eggs" class="form-control" value="{{animalData.eggs}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>milk</label>
+                                <select name="milk" id="milk" class="form-control" value="{{animalData.milk}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>airborne</label>
+                                <select name="airborne" id="airborne" class="form-control"
+                                    value="{{animalData.airborne}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>aquatic</label>
+                                <select name="aquatic" id="aquatic" class="form-control" value="{{animalData.aquatic}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>predator</label>
+                                <select name="predator" id="predator" class="form-control"
+                                    value="{{animalData.predator}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>toothed</label>
+                                <select name="toothed" id="toothed" class="form-control" value="{{animalData.toothed}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>backbone</label>
+                                <select name="backbone" id="backbone" class="form-control"
+                                    value="{{animalData.backbone}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>breathes</label>
+                                <select name="breathes" id="breathes" class="form-control"
+                                    value="{{animalData.breathes}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>venomous</label>
+                                <select name="venomous" id="venomous" class="form-control"
+                                    value="{{animalData.venomous}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>fins</label>
+                                <select name="fins" id="fins" class="form-control" value="{{animalData.fins}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>legs</label>
+                                <select name="legs" id="legs" class="form-control" value="{{animalData.legs}}">
+                                    <option value="0">0</option>
+                                    <option value="2">2</option>
+                                    <option value="4">4</option>
+                                    <option value="6">6</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>tail</label>
+                                <select name="tail" id="tail" class="form-control" value="{{animalData.tail}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>domesstic</label>
+                                <select name="domestic" id="domestic" class="form-control"
+                                    value="{{animalData.domestic}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>catsize</label>
+                                <select name="catsize" id="catsize" class="form-control" value="{{animalData.catsize}}">
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-mb-6">
+                            <div class="mb-3">
+                                <label>type</label>
+                                <select name="type" id="type" class="form-control" value="{{animalData.type}}">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" name="submit_button" class="btn btn-primary" value="Edit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">Zoo Animals</div>
+                {{#if isAdmin}}
+                <div class="col">
+                    <a href="/add" class="btn btn-success btn-sm float-end">ADD</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>name</th>
+                        <th>hair</th>
+                        <th>feathers</th>
+                        <th>eggs</th>
+                        <th>milk</th>
+                        <th>airborne</th>
+                        <th>aquatic</th>
+                        <th>predator</th>
+                        <th>toothed</th>
+                        <th>backbone</th>
+                        <th>breathes</th>
+                        <th>venomous</th>
+                        <th>fins</th>
+                        <th>legs</th>
+                        <th>tail</th>
+                        <th>domestic</th>
+                        <th>catsize</th>
+                        <th>type</th>
+                        {{#if isAdmin}}
+                        <th>ACTION</th>
+                        {{/if}}
+                        {{#if isCaretaker}}
+                        <th>ACTION</th>
+                        {{/if}}
+                    </tr>
+                    {{#if hasData}}
+                    {{#each dbdata}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>{{this.hair}}</td>
+                        <td>{{this.feathers}}</td>
+                        <td>{{this.eggs}}</td>
+                        <td>{{this.milk}}</td>
+                        <td>{{this.airborne}}</td>
+                        <td>{{this.aquatic}}</td>
+                        <td>{{this.predator}}</td>
+                        <td>{{this.toothed}}</td>
+                        <td>{{this.backbone}}</td>
+                        <td>{{this.breathes}}</td>
+                        <td>{{this.venomous}}</td>
+                        <td>{{this.fins}}</td>
+                        <td>{{this.legs}}</td>
+                        <td>{{this.tail}}</td>
+                        <td>{{this.domestic}}</td>
+                        <td>{{this.catsize}}</td>
+                        <td>{{this.type}}</td>
+                        {{#if ../isAdmin}}
+                        <td>
+                            <a href="/edit/{{this.name}}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="/delete/{{this.name}}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                        {{else if ../isCaretaker}}
+                        <td>
+                            <a href="/edit/{{this.name}}" class="btn btn-primary btn-sm">Edit</a>
+                        </td>
+                        {{/if}}
+                    </tr>
+                    {{/each}}
+                    {{else}}
+                    <tr>
+                        <td colspan="5">No Data Found</td>
+                    </tr>
+                    {{/if}}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
